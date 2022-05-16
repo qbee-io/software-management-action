@@ -1,0 +1,29 @@
+# action.yml
+name: 'create qbee software management'
+description: 'create a software management configuration for the qbee.io platform'
+inputs:
+  token:
+    description: 'jwt token'
+    required: true
+  config_file:
+    description: 'json file containing the file distribution configuration'
+    required: true
+  mode:
+    description: 'add configuration to existing software management (add) - replace existing (replace) - apply only if none is present (if_not_present)'
+  device_or_group_id:
+    description: 'id of the group or device for which the configuration should be applied - default: root (all devices)'
+    required: false
+    default: 'root'
+  commit_message:
+    description: 'commit message for new configuration'
+    required: false
+    default: 'file distribution update via GitHub'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.config_file }}
+    - ${{ inputs.mode }}
+    - ${{ inputs.device_or_group_id }}
+    - ${{ inputs.commit_message }}
