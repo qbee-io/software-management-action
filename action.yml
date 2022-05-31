@@ -8,6 +8,9 @@ inputs:
   config_file:
     description: 'json file containing the file distribution configuration'
     required: true
+  package_name:
+    description: 'the name of the deb package to be distributed (will be change in the config file)'
+    required: true
   mode:
     description: 'add configuration to existing software management (add) - replace existing (replace) - apply only if none is present (if_not_present)'
   device_or_group_id:
@@ -24,6 +27,7 @@ runs:
   args:
     - ${{ inputs.token }}
     - ${{ inputs.config_file }}
+    - ${{ inputs.package_name }}
     - ${{ inputs.mode }}
     - ${{ inputs.device_or_group_id }}
     - ${{ inputs.commit_message }}
