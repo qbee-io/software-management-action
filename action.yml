@@ -5,6 +5,7 @@ inputs:
   token:
     description: 'jwt token'
     required: true
+    deprecationMessage: 'THIS ACTION IS DEPRECATED. Use qbee-io/config-apply-action to replace this action. Find it here: https://github.com/qbee-io/config-apply-action'
   config_file:
     description: 'json file containing the file distribution configuration'
     required: true
